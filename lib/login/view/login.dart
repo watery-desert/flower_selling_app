@@ -1,5 +1,3 @@
-import 'package:flower_selling_app/login/models/email.dart';
-import 'package:flower_selling_app/login/models/password.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,11 +9,12 @@ import '../../widgets/filled_button.dart';
 import '../../widgets/text_input_field.dart';
 import 'package:formz/formz.dart';
 import '../cubit/login_cubit.dart';
+import 'package:form_validators/form_validators.dart';
 
 class LoginScreen extends StatelessWidget {
   final VoidCallback onTap;
 
-  LoginScreen({Key? key, required this.onTap}) : super(key: key);
+  const LoginScreen({Key? key, required this.onTap}) : super(key: key);
 
   Widget _socialIcon(IconData icon) {
     return Icon(
@@ -25,32 +24,12 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  final LoginCubit loginCubit = LoginCubit();
-
-  String _showEmailErrorMessage(EmailValidationError? error) {
-    if (error == EmailValidationError.empty) {
-      return 'Empty password';
-    } else if (error == EmailValidationError.invalid) {
-      return 'Invalid password';
-    } else {
-      return 'error';
-    }
-  }
-
-  String _showPasswordErrorMessage(PasswordValidationError? error) {
-    if (error == PasswordValidationError.empty) {
-      return 'Empty Email';
-    } else if (error == PasswordValidationError.invalid) {
-      return 'Invalid Email';
-    } else {
-      return 'error';
-    }
-  }
+  static final LoginCubit _loginCubit = LoginCubit();
 
   @override
   Widget build(BuildContext context) {
     return BlocListener<LoginCubit, LoginState>(
-      bloc: loginCubit,
+      bloc: _loginCubit,
       listener: (context, state) {
         if (state.status.isSubmissionSuccess) {
           ScaffoldMessenger.of(context).showSnackBar(
@@ -65,8 +44,7 @@ class LoginScreen extends StatelessWidget {
           const AppLogo(),
           const SizedBox(height: 48),
           BlocBuilder<LoginCubit, LoginState>(
-            bloc: loginCubit,
-            buildWhen: (previous, current) => previous.email != current.email,
+            bloc: _loginCubit,
             builder: (context, state) {
               final bool showError = state.email.invalid;
               final buttonTapped = state.buttonTapped;
@@ -74,41 +52,40 @@ class LoginScreen extends StatelessWidget {
               return TextInputField(
                 hintText: 'Email',
                 onChange: (value) {
-                  loginCubit.onEmailChange(value);
+                  _loginCubit.onEmailChange(value);
                 },
                 errorText: buttonTapped && showError
-                    ? _showEmailErrorMessage(state.email.error)
+                    ? Email.showEmailErrorMessage(state.email.error)
                     : null,
               );
             },
           ),
           const SizedBox(height: 48),
           BlocBuilder<LoginCubit, LoginState>(
-            bloc: loginCubit,
-            buildWhen: (previous, current) =>
-                previous.password != current.password,
+            bloc: _loginCubit,
             builder: (context, state) {
               final showError = state.password.invalid;
               final buttonTapped = state.buttonTapped;
 
               return TextInputField(
                 hintText: 'Password',
+                obscureText: true,
                 onChange: (value) {
-                  loginCubit.onPasswordChange(value);
+                  _loginCubit.onPasswordChange(value);
                 },
                 errorText: buttonTapped && showError
-                    ? _showPasswordErrorMessage(state.password.error)
+                    ? Password.showPasswordErrorMessage(state.password.error)
                     : null,
               );
             },
           ),
           const SizedBox(height: 48),
           BlocBuilder<LoginCubit, LoginState>(
-            bloc: loginCubit,
+            bloc: _loginCubit,
             builder: (context, state) {
               return FilledButton(
                 onTap: () {
-                  loginCubit.loginWithEmailAndPassword();
+                  _loginCubit.loginWithEmailAndPassword();
                 },
                 title:
                     state.status.isSubmissionInProgress ? 'Loading' : 'Log In',

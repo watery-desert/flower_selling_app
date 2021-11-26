@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'signup/signup.dart';
 import 'login/view/login.dart';
 import 'dart:math' as math;
@@ -61,10 +61,14 @@ class _AuthenticationSwitcherState extends State<AuthenticationSwitcher>
                         _animationController.forward();
                       },
                     )
-                  : SignUp(
-                      onTap: () {
-                        _animationController.reverse();
-                      },
+                  : Transform(
+                      alignment: Alignment.center,
+                      transform: Matrix4.identity()..rotateY(math.pi),
+                      child: SignUp(
+                        onTap: () {
+                          _animationController.reverse();
+                        },
+                      ),
                     ),
             ),
           );

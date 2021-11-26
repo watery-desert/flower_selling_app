@@ -3,8 +3,6 @@ import 'package:equatable/equatable.dart';
 import 'package:form_validators/form_validators.dart';
 import 'package:formz/formz.dart';
 
-import '../models/email.dart';
-import '../models/password.dart';
 
 part 'login_state.dart';
 

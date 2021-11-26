@@ -20,4 +20,14 @@ class Email extends FormzInput<String, EmailValidationError> {
       return EmailValidationError.invalid;
     }
   }
+
+  static String showEmailErrorMessage(EmailValidationError? error) {
+    if (error == EmailValidationError.empty) {
+      return 'Empty email';
+    } else if (error == EmailValidationError.invalid) {
+      return 'Invalid email';
+    } else {
+      return 'error';
+    }
+  }
 }

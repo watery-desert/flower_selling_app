@@ -4,11 +4,13 @@ class TextInputField extends StatelessWidget {
   final String hintText;
   final void Function(String value) onChange;
   final String? errorText;
+  final bool obscureText;
   const TextInputField({
     Key? key,
     required this.hintText,
     required this.onChange,
     required this.errorText,
+    this.obscureText = false,
   }) : super(key: key);
 
   @override
@@ -26,11 +28,12 @@ class TextInputField extends StatelessWidget {
               BoxShadow(
                 color: Colors.black.withOpacity(0.1),
                 blurRadius: 20,
-                offset: Offset(4, 8),
+                offset: const Offset(4, 8),
               ),
             ],
           ),
           child: TextField(
+            obscureText: obscureText,
             decoration: InputDecoration(
               border: InputBorder.none,
               hintText: hintText,

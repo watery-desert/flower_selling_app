@@ -22,15 +22,15 @@ environment:
 
 dependencies:
   cupertino_icons: ^1.0.2
+  equatable: ^2.0.3
   flutter:
     sdk: flutter
+  flutter_bloc: ^8.0.0
   font_awesome_flutter: ^9.1.0
-  formz: ^0.4.0
-  smooth_page_indicator: ^0.3.0-nullsafety.0
   form_validators:
     path: packages/form_validators
-  flutter_bloc: ^7.3.0
-  equatable: ^2.0.3
+  formz: ^0.4.0
+  smooth_page_indicator: ^0.3.0-nullsafety.0
 
 dev_dependencies:
   flutter_lints: ^1.0.4
