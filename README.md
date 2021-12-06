@@ -15,21 +15,38 @@
 
 
 
+<div>
 
-<p><h2 align="left">OnBording & Authentication screens</h2></p>
+### OnBording & Authentication screens 
 
 <!-- <p><h4>Easily customizable floating button menu created with SwiftUI</h4></p> -->
 
 <!-- ___ -->
 
 
-<img align="right" src="https://raw.githubusercontent.com/watery-desert/assets/main/flower_selling_app/screen_recordings/authentication_home.gif" width="300" />
+<img align="right" src="https://raw.githubusercontent.com/watery-desert/assets/main/flower_selling_app/screen_recordings/authentication_home.gif" width="300"/>
+
+
+<img align="left" src="https://raw.githubusercontent.com/watery-desert/assets/main/flower_selling_app/screen_recordings/onboarding.gif" width="300"/>
+
+</div>
+
+
+<div>
+
+### Add flower To cart and cart view
+
+<!-- <p><h4>Easily customizable floating button menu created with SwiftUI</h4></p> -->
 
 
 
-<img align="left" src="https://raw.githubusercontent.com/watery-desert/assets/main/flower_selling_app/screen_recordings/onboarding.gif" width="300" />
+
+<img align="right" src="https://raw.githubusercontent.com/watery-desert/assets/main/flower_selling_app/screen_recordings/add_to_cart.gif" width="300"/>
 
 
+<img align="left" src="https://raw.githubusercontent.com/watery-desert/assets/main/flower_selling_app/screen_recordings/cart.gif" width="300"/>
+
+</div>
 
 
 
