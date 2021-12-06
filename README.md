@@ -13,40 +13,70 @@
 </div>
 <br>
 
+# Flower selling app using firebase backend.
+
+### Screenshots
+
+<table>
+   <tr>
+      <td align="center">
+         <img src="https://raw.githubusercontent.com/watery-desert/assets/main/flower_selling_app/screenshots/onboarding.png" width="200"/>
+      </td>
+      <td align="center">
+         <img src="https://raw.githubusercontent.com/watery-desert/assets/main/flower_selling_app/screenshots/login.png" width="200"/>
+      </td>
+      <td align="center">
+         <img align="right" src="https://raw.githubusercontent.com/watery-desert/assets/main/flower_selling_app/screenshots/home.png" width="200"/>
+      </td>
+   </tr>
+   <tr>
+      <td align="center">
+         <img align="left" src="https://raw.githubusercontent.com/watery-desert/assets/main/flower_selling_app/screenshots/flower_detail.png" width="200"/>
+      </td>
+      <td align="center">
+         <img align="left" src="https://raw.githubusercontent.com/watery-desert/assets/main/flower_selling_app/screenshots/cart.png" width="200"/>
+      </td>
+      <td align="center">
+         <img align="left" src="https://raw.githubusercontent.com/watery-desert/assets/main/flower_selling_app/screenshots/profile.png" width="200"/>
+      </td>      
+   </tr>
+</table>
 
 
-<div>
-
-### OnBording & Authentication screens 
-
-<!-- <p><h4>Easily customizable floating button menu created with SwiftUI</h4></p> -->
-
-<!-- ___ -->
-
-
-<img align="right" src="https://raw.githubusercontent.com/watery-desert/assets/main/flower_selling_app/screen_recordings/authentication_home.gif" width="300"/>
-
-
-<img align="left" src="https://raw.githubusercontent.com/watery-desert/assets/main/flower_selling_app/screen_recordings/onboarding.gif" width="300"/>
-
-</div>
-
-
-<div>
-
-### Add flower To cart and cart view
-
-<!-- <p><h4>Easily customizable floating button menu created with SwiftUI</h4></p> -->
 
 
 
 
-<img align="right" src="https://raw.githubusercontent.com/watery-desert/assets/main/flower_selling_app/screen_recordings/add_to_cart.gif" width="300"/>
+### Screen recordings
+
+<table>
+   <tr>
+      <td align="center">
+         <img src="https://raw.githubusercontent.com/watery-desert/assets/main/flower_selling_app/screen_recordings/authentication_home.gif" width="200"/>
+      </td>
+      <td align="center">
+         <img src="https://raw.githubusercontent.com/watery-desert/assets/main/flower_selling_app/screen_recordings/onboarding.gif" width="200"/>
+      </td>
+      <td align="center">
+         <img align="right" src="https://raw.githubusercontent.com/watery-desert/assets/main/flower_selling_app/screen_recordings/add_to_cart.gif" width="200"/>
+      </td>
+   </tr>
+   <tr>
+      <td align="center">
+         <img align="left" src="https://raw.githubusercontent.com/watery-desert/assets/main/flower_selling_app/screen_recordings/cart.gif" width="200"/>
+      </td>
+      <td align="center">
+         <img align="left" src="https://raw.githubusercontent.com/watery-desert/assets/main/flower_selling_app/screen_recordings/dark_mode.gif" width="200"/>
+      </td>
+      <td align="center">
+         <img align="left" src="https://raw.githubusercontent.com/watery-desert/assets/main/flower_selling_app/screen_recordings/signout.gif" width="200"/>
+      </td>      
+   </tr>
+</table>
 
 
-<img align="left" src="https://raw.githubusercontent.com/watery-desert/assets/main/flower_selling_app/screen_recordings/cart.gif" width="300"/>
 
-</div>
+
 
 
 
