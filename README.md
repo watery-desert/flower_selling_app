@@ -14,7 +14,18 @@
 <br>
 
 # Flower selling app using firebase backend.
-
+### ⚠️ Add firebase and enable email authentication and firstore database or it won't work
+## Don't know how to do?
+ - Craete a firebase project no need to enable `Google Analytics`.
+ - Open the project then add a new iOS app. 
+ - Download the `GoogleService-info.plist` and put it inside `ios/Runner/`
+ - Go to `Authentication` from left panel then `Sign-in method` and Enable `Email/Password`
+ - Select `Firestore Database` then `create database` this will take few clicks then you done.
+- Go to the rules delete the time validation line and `true` after if. Be aware this will make the database public and you don't wanna do in production. 
+```
+allow read, write: if // add here 'true;'
+      request.time < timestamp.date(2022, 1, 2); // delete this line
+```
 ### Screenshots
 
 <table>
@@ -75,7 +86,19 @@
 </table>
 
 
+<br>
+<details>
+   <summary>flutter packages developed by watery desert</summary>
+   <br>
 
+  ● [Sliding Clipped Nav Bar](https://github.com/watery-desert/sliding_clipped_nav_bar)\
+  ● [Water Drop Nav Bar](https://github.com/watery-desert/water_drop_nav_bar)\
+  ● [Swipeable Tile](https://github.com/watery-desert/swipeable_tile)\
+  ● [Loading Animation Widget](https://github.com/watery-desert/loading_animation_widget)
+
+   </summary> 
+</details>
+<br>
 
 
 
