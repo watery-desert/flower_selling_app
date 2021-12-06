@@ -20,14 +20,14 @@
 
 <!-- <p><h4>Easily customizable floating button menu created with SwiftUI</h4></p> -->
 
-___
+<!-- ___ -->
 
 
-<img align="right" src="https://raw.githubusercontent.com/watery-desert/assets/main/flower_selling_app/screen_recordings/authentication_home.gif" width="200" />
+<img align="right" src="https://raw.githubusercontent.com/watery-desert/assets/main/flower_selling_app/screen_recordings/authentication_home.gif" width="400" />
 
 
 
-<img align="left" src="https://raw.githubusercontent.com/watery-desert/assets/main/flower_selling_app/screen_recordings/onboarding.gif" width="200" />
+<img align="left" src="https://raw.githubusercontent.com/watery-desert/assets/main/flower_selling_app/screen_recordings/onboarding.gif" width="400" />
 
 
 
