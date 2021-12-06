@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+import '../theme/theme.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FilledButton extends StatefulWidget {
   final VoidCallback? onTap;
   final String title;
-  final Color color;
+  final Color? color;
 
   const FilledButton({
     Key? key,
     required this.title,
     required this.onTap,
-    this.color = Colors.purple,
+    this.color,
   }) : super(key: key);
 
   @override
@@ -35,8 +37,10 @@ class _FilledButtonState extends State<FilledButton>
 
   @override
   Widget build(BuildContext context) {
+    final bool isLight = context.watch<ThemeCubit>().state;
     final onTap = widget.onTap;
-    final color = widget.color;
+    final color = widget.color ??
+        (isLight ? const Color(0xFFDEDA80) : const Color(0xFFD6D16A));
     return GestureDetector(
       onTap: onTap,
       onTapDown: onTap != null

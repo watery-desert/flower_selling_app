@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../../widgets/app_logo.dart';
-import '../../widgets/tap_buttom.dart';
+import '../../../widgets/app_logo.dart';
+import '../../../widgets/tap_buttom.dart';
 
-import '../../widgets/filled_button.dart';
-import '../../widgets/text_input_field.dart';
+import '../../../widgets/filled_button.dart';
+import '../../../widgets/text_input_field.dart';
 import 'package:formz/formz.dart';
 import '../cubit/login_cubit.dart';
 import 'package:form_validators/form_validators.dart';
@@ -24,19 +24,29 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  static final LoginCubit _loginCubit = LoginCubit();
-
   @override
   Widget build(BuildContext context) {
+    final LoginCubit loginCubit = context.read<LoginCubit>();
+
     return BlocListener<LoginCubit, LoginState>(
-      bloc: _loginCubit,
       listener: (context, state) {
-        if (state.status.isSubmissionSuccess) {
+        if (state.status.isSubmissionFailure) {
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('login succeeded'),
+            SnackBar(
+              content: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: const [
+                    Text('login failed'),
+                    Icon(Icons.error),
+                  ],
+                ),
+              ),
             ),
           );
+        } else if (state.status.isSubmissionSuccess) {
+          Navigator.of(context).pop();
         }
       },
       child: Column(
@@ -44,7 +54,6 @@ class LoginScreen extends StatelessWidget {
           const AppLogo(),
           const SizedBox(height: 48),
           BlocBuilder<LoginCubit, LoginState>(
-            bloc: _loginCubit,
             builder: (context, state) {
               final bool showError = state.email.invalid;
               final buttonTapped = state.buttonTapped;
@@ -52,7 +61,7 @@ class LoginScreen extends StatelessWidget {
               return TextInputField(
                 hintText: 'Email',
                 onChange: (value) {
-                  _loginCubit.onEmailChange(value);
+                  loginCubit.onEmailChange(value);
                 },
                 errorText: buttonTapped && showError
                     ? Email.showEmailErrorMessage(state.email.error)
@@ -62,7 +71,6 @@ class LoginScreen extends StatelessWidget {
           ),
           const SizedBox(height: 48),
           BlocBuilder<LoginCubit, LoginState>(
-            bloc: _loginCubit,
             builder: (context, state) {
               final showError = state.password.invalid;
               final buttonTapped = state.buttonTapped;
@@ -71,7 +79,7 @@ class LoginScreen extends StatelessWidget {
                 hintText: 'Password',
                 obscureText: true,
                 onChange: (value) {
-                  _loginCubit.onPasswordChange(value);
+                  loginCubit.onPasswordChange(value);
                 },
                 errorText: buttonTapped && showError
                     ? Password.showPasswordErrorMessage(state.password.error)
@@ -81,12 +89,13 @@ class LoginScreen extends StatelessWidget {
           ),
           const SizedBox(height: 48),
           BlocBuilder<LoginCubit, LoginState>(
-            bloc: _loginCubit,
             builder: (context, state) {
               return FilledButton(
-                onTap: () {
-                  _loginCubit.loginWithEmailAndPassword();
-                },
+                onTap: state.status.isSubmissionInProgress
+                    ? null
+                    : () {
+                        loginCubit.loginWithEmailAndPassword();
+                      },
                 title:
                     state.status.isSubmissionInProgress ? 'Loading' : 'Log In',
                 // color: Color(0xFF5FDF83),

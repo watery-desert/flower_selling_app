@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../authentication_switcher.dart';
+import '../authentication/authentication_view.dart';
 
 import 'build_page.dart';
 import 'top_bar.dart';
 
 class OnboardingScreen extends StatefulWidget {
-  OnboardingScreen({
+  const OnboardingScreen({
     Key? key,
   }) : super(key: key);
 
@@ -26,9 +26,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   }
 
   void _navigateToSigin() {
-    Navigator.of(context).pushReplacement(MaterialPageRoute(
-      builder: (context) => AuthenticationSwitcher(),
-    ));
+    Navigator.of(context).push(AuthenticationView.show());
   }
 
   @override
@@ -45,8 +43,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             Expanded(
                 child: PageView(
               controller: _pageController,
-              physics: NeverScrollableScrollPhysics(),
-              children: [
+              physics: const NeverScrollableScrollPhysics(),
+              children: const <Widget>[
                 BuildPage(
                   assetLink: 'assets/images/flower.png',
                   title: 'Best quality flower',
@@ -71,14 +69,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             _navigateToSigin();
           } else {
             _pageController.animateToPage(_currentPage,
-                duration: const Duration(milliseconds: 800),
-                curve: Curves.easeInOutCubic);
+                duration: const Duration(milliseconds: 1500),
+                curve: Curves.elasticOut);
           }
         },
         tooltip: 'Next Page',
         child: Transform.translate(
-          offset: Offset(2, 0),
-          child: Icon(FontAwesomeIcons.play),
+          offset: const Offset(2, 0),
+          child: const Icon(FontAwesomeIcons.play),
         ),
       ),
     );

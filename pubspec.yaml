@@ -21,17 +21,33 @@ environment:
   sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
+  animations: ^2.0.2
+  another_flushbar: ^1.10.26
+  authentication_repository:
+    path: packages/authentication_repository
+  cart_repository:
+    path: packages/cart_repository
+  cloud_firestore: ^3.1.1
   cupertino_icons: ^1.0.2
   equatable: ^2.0.3
   firebase_auth: ^3.2.0
+  firebase_core: ^1.10.0
+  flowers_repository:
+    path: packages/flowers_repository
   flutter:
     sdk: flutter
   flutter_bloc: ^8.0.0
+  flutter_feather_icons: ^2.0.0+1
+  flutter_staggered_animations: ^1.0.0
   font_awesome_flutter: ^9.1.0
   form_validators:
     path: packages/form_validators
   formz: ^0.4.0
+  loading_animation_widget: null
+  shared_preferences: ^2.0.9
+  sliding_clipped_nav_bar: ^2.0.1
   smooth_page_indicator: ^0.3.0-nullsafety.0
+  swipeable_tile: ^0.0.2
 
 dev_dependencies:
   flutter_lints: ^1.0.4

@@ -1,18 +1,39 @@
+import 'package:authentication_repository/authentication_repository.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'signup/signup.dart';
-import 'login/view/login.dart';
+import './signup/signup.dart';
+import './login/login.dart';
 import 'dart:math' as math;
-import 'login/login.dart';
 
-class AuthenticationSwitcher extends StatefulWidget {
-  const AuthenticationSwitcher({Key? key}) : super(key: key);
+
+class AuthenticationView extends StatefulWidget {
+  const AuthenticationView._({Key? key}) : super(key: key);
+
+  static Route show() => MaterialPageRoute(
+        fullscreenDialog: true,
+        builder: (context) => MultiBlocProvider(
+          providers: [
+            BlocProvider<LoginCubit>(
+              create: (context) => LoginCubit(
+                repository: context.read<AuthenticationRepository>(),
+              ),
+            ),
+            BlocProvider<SignupCubit>(
+              create: (context) => SignupCubit(
+                repository: context.read<AuthenticationRepository>(),
+              ),
+            )
+          ],
+          child: const AuthenticationView._(),
+        ),
+      );
 
   @override
-  _AuthenticationSwitcherState createState() => _AuthenticationSwitcherState();
+  _AuthenticationViewState createState() => _AuthenticationViewState();
 }
 
-class _AuthenticationSwitcherState extends State<AuthenticationSwitcher>
+class _AuthenticationViewState extends State<AuthenticationView>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _rotationAnimation;

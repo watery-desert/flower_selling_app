@@ -33,6 +33,7 @@ class TextInputField extends StatelessWidget {
             ],
           ),
           child: TextField(
+            autocorrect: false,
             obscureText: obscureText,
             decoration: InputDecoration(
               border: InputBorder.none,

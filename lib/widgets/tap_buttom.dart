@@ -8,6 +8,7 @@ class TapButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final accentColor = Theme.of(context).colorScheme.secondary;
     return GestureDetector(
       onTap: onTap,
       child: Padding(
@@ -15,7 +16,7 @@ class TapButton extends StatelessWidget {
         child: Text(
           title,
           style: TextStyle(
-            color: Colors.blue,
+            color: accentColor,
             fontWeight: FontWeight.w500,
             fontSize: 16,
           ),

@@ -1,3 +1,4 @@
+import 'package:authentication_repository/authentication_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:form_validators/form_validators.dart';
@@ -6,7 +7,11 @@ import 'package:formz/formz.dart';
 part 'signup_state.dart';
 
 class SignupCubit extends Cubit<SignupState> {
-  SignupCubit() : super(const SignupState());
+  final AuthenticationRepository _authenticationRepository;
+
+  SignupCubit({required AuthenticationRepository repository})
+      : _authenticationRepository = repository,
+        super(const SignupState());
 
   void onNameChange(String value) {
     final name = Name.dirty(value);
@@ -56,11 +61,13 @@ class SignupCubit extends Cubit<SignupState> {
     }
 
     if (!state.status.isValidated) return;
-
     emit(state.copyWith(status: FormzStatus.submissionInProgress));
-
-    /// call firebase log in api
-    await Future.delayed(const Duration(milliseconds: 400));
-    emit(state.copyWith(status: FormzStatus.submissionSuccess));
+    try {
+      await _authenticationRepository.createUserWithEmail(
+          email: state.email.value, password: state.password.value);
+      emit(state.copyWith(status: FormzStatus.submissionSuccess));
+    } catch (_) {
+      emit(state.copyWith(status: FormzStatus.submissionFailure));
+    }
   }
 }
