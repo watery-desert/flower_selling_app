@@ -17,12 +17,12 @@ class BuildPage extends StatelessWidget {
         Image.asset(assetLink),
         Text(
           title,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.w500,
           ),
         ),
-        SizedBox(
+      const  SizedBox(
           height: 80,
         )
       ],

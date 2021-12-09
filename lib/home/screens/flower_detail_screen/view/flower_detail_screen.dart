@@ -16,7 +16,6 @@ class FlowerDetailScreen extends StatelessWidget {
   static Widget route(BuildContext context, Flower flower, {Key? key}) {
     return BlocProvider<CartInfoBloc>(
       create: (context) => CartInfoBloc(
-        flowersRepo: context.read<FlowersRepo>(),
         cartRepo: context.read<CartRepo>(),
       )..add(CheckFlowerInCart(flower.id)),
       child: FlowerDetailScreen._(key, flower),

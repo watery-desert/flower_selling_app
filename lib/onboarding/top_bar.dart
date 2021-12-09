@@ -25,14 +25,14 @@ class TopBar extends StatelessWidget {
             SmoothPageIndicator(
               controller: controller,
               count: 3,
-              effect: ExpandingDotsEffect(
+              effect: const ExpandingDotsEffect(
                 dotHeight: 8.0,
                 dotWidth: 8.0,
               ),
             ),
             GestureDetector(
               onTap: onTap,
-              child: Text(
+              child: const Text(
                 'Skip',
                 style: TextStyle(
                   fontSize: 16,

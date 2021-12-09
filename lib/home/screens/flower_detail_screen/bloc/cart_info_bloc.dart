@@ -9,14 +9,11 @@ part 'cart_info_event.dart';
 part 'cart_info_state.dart';
 
 class CartInfoBloc extends Bloc<CartInfoEvent, CartInfoState> {
-  final FlowersRepo _flowersRepo;
   final CartRepo _cartRepo;
   StreamSubscription? streamSubscription;
   CartInfoBloc({
-    required FlowersRepo flowersRepo,
     required CartRepo cartRepo,
-  })  : _flowersRepo = flowersRepo,
-        _cartRepo = cartRepo,
+  })  : _cartRepo = cartRepo,
         super(CartInfoLoading()) {
     on<CheckFlowerInCart>(_onCheckFlowerInCart);
     // on<FlowerUpdated>(_onFlowerUpdated);

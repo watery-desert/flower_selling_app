@@ -22,50 +22,51 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   void initState() {
     super.initState();
-    _pageController = PageController();
+    _pageController = PageController(initialPage: _currentPage);
   }
 
   void _navigateToSigin() {
     Navigator.of(context).push(AuthenticationView.show());
   }
 
+  final List<Widget> _pages = const [
+    BuildPage(
+      assetLink: 'assets/images/flower.png',
+      title: 'Best quality flower',
+    ),
+    BuildPage(
+      assetLink: 'assets/images/wallet.png',
+      title: 'Budget friendly price',
+    ),
+    BuildPage(
+      assetLink: 'assets/images/truck.png',
+      title: 'Fast delivery',
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            TopBar(
-              controller: _pageController,
-              onTap: _navigateToSigin,
-            ),
-            Expanded(
-                child: PageView(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          TopBar(
+            controller: _pageController,
+            onTap: _navigateToSigin,
+          ),
+          Expanded(
+            child: PageView(
               controller: _pageController,
               physics: const NeverScrollableScrollPhysics(),
-              children: const <Widget>[
-                BuildPage(
-                  assetLink: 'assets/images/flower.png',
-                  title: 'Best quality flower',
-                ),
-                BuildPage(
-                  assetLink: 'assets/images/wallet.png',
-                  title: 'Budget friendly price',
-                ),
-                BuildPage(
-                  assetLink: 'assets/images/truck.png',
-                  title: 'Fast delivery',
-                ),
-              ],
-            )),
-          ],
-        ),
+              children: <Widget>[..._pages],
+            ),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           _currentPage++;
-          if (_currentPage == 3) {
+          if (_currentPage == _pages.length) {
             _navigateToSigin();
           } else {
             _pageController.animateToPage(_currentPage,
