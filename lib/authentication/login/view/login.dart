@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -10,6 +10,7 @@ import '../../../widgets/text_input_field.dart';
 import 'package:formz/formz.dart';
 import '../cubit/login_cubit.dart';
 import 'package:form_validators/form_validators.dart';
+import '../../../widgets/flush_bar.dart';
 
 class LoginScreen extends StatelessWidget {
   final VoidCallback onTap;
@@ -31,20 +32,26 @@ class LoginScreen extends StatelessWidget {
     return BlocListener<LoginCubit, LoginState>(
       listener: (context, state) {
         if (state.status.isSubmissionFailure) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Text('login failed'),
-                    Icon(Icons.error),
-                  ],
-                ),
-              ),
-            ),
+           showMessage(
+            context: context,
+            code: "Error",
+            icon: Icons.error_outline_rounded,
+            message: 'login failed',
           );
+          // ScaffoldMessenger.of(context).showSnackBar(
+          //   SnackBar(
+          //     content: Padding(
+          //       padding: const EdgeInsets.all(8.0),
+          //       child: Row(
+          //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //         children: const [
+          //           Text('login failed'),
+          //           Icon(Icons.error),
+          //         ],
+          //       ),
+          //     ),
+          //   ),
+          // );
         } else if (state.status.isSubmissionSuccess) {
           Navigator.of(context).pop();
         }

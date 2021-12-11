@@ -7,6 +7,7 @@ import '../../../widgets/text_input_field.dart';
 import '../../../widgets/filled_button.dart';
 import '../../../widgets/tap_buttom.dart';
 import '../cubit/signup_cubit.dart';
+import '../../../widgets/flush_bar.dart';
 
 class SignUp extends StatelessWidget {
   final VoidCallback onTap;
@@ -18,10 +19,11 @@ class SignUp extends StatelessWidget {
     return BlocListener<SignupCubit, SignupState>(
       listener: (context, state) {
         if (state.status.isSubmissionFailure) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Sign up failed'),
-            ),
+          showMessage(
+            context: context,
+            code: "Failed",
+            icon: Icons.error_outline_rounded,
+            message: 'Sign up failed',
           );
         } else if (state.status.isSubmissionSuccess) {
           Navigator.of(context).pop();

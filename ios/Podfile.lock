@@ -67,8 +67,6 @@ PODS:
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
   - PromisesObjC (2.0.0)
-  - shared_preferences_ios (0.0.1):
-    - Flutter
 
 DEPENDENCIES:
   - cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`)
@@ -76,7 +74,6 @@ DEPENDENCIES:
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - FirebaseFirestore (from `https://github.com/invertase/firestore-ios-sdk-frameworks.git`, tag `8.9.0`)
   - Flutter (from `Flutter`)
-  - shared_preferences_ios (from `.symlinks/plugins/shared_preferences_ios/ios`)
 
 SPEC REPOS:
   trunk:
@@ -102,8 +99,6 @@ EXTERNAL SOURCES:
     :tag: 8.9.0
   Flutter:
     :path: Flutter
-  shared_preferences_ios:
-    :path: ".symlinks/plugins/shared_preferences_ios/ios"
 
 CHECKOUT OPTIONS:
   FirebaseFirestore:
@@ -125,7 +120,6 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 43748f93435c2aa068b1cbe39655aaf600652e91
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
-  shared_preferences_ios: aef470a42dc4675a1cdd50e3158b42e3d1232b32
 
 PODFILE CHECKSUM: 793596c1f3e7b82d179747c1fe9e8416cae11019
 
