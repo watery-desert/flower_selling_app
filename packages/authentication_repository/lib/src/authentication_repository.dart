@@ -9,11 +9,10 @@ class LogInWithEmailAndPasswordFailure implements Exception {}
 class SignOutFailure implements Exception {}
 
 class AuthenticationRepository {
-  AuthenticationRepository({
-    firebase_auth.FirebaseAuth? firebaseAuth,
-  }) : _firebaseAuth = firebaseAuth ?? firebase_auth.FirebaseAuth.instance;
+  AuthenticationRepository();
 
-  final firebase_auth.FirebaseAuth _firebaseAuth;
+  final firebase_auth.FirebaseAuth _firebaseAuth =
+      firebase_auth.FirebaseAuth.instance;
 
   Stream<AuthUser> get user {
     return _firebaseAuth.authStateChanges().map((firebaseUser) {
@@ -55,10 +54,6 @@ class AuthenticationRepository {
     } on Exception {
       throw SignOutFailure();
     }
-  }
-
-  Future<void> sendEmailVerification() async {
-    await _firebaseAuth.currentUser?.sendEmailVerification();
   }
 }
 

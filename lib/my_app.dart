@@ -13,6 +13,7 @@ import 'package:authentication_repository/authentication_repository.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
+  
   static final AuthenticationRepository _authenticationRepository =
       AuthenticationRepository();
       
